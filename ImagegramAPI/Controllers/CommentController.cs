@@ -87,11 +87,12 @@ namespace ImagegramAPI.Controllers
                 if (currentAccountId == commentCreatorId)
                 {
                     _commentRepository.Delete(commentId);
+
                     return Ok();
                 }
                 else
                 {
-                    return Unauthorized();
+                    return Forbid();
                 }
             }
         }
