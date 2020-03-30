@@ -42,7 +42,7 @@ namespace ImagegramAPI.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comment",
+                name: "Comments",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
@@ -54,29 +54,34 @@ namespace ImagegramAPI.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comment", x => x.Id);
+                    table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comment_Accounts_CreatorId",
+                        name: "FK_Comments_Accounts_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Comment_Posts_PostId",
+                        name: "FK_Comments_Posts_PostId",
                         column: x => x.PostId,
                         principalTable: "Posts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1L, "Admin" });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_CreatorId",
-                table: "Comment",
+                name: "IX_Comments_CreatorId",
+                table: "Comments",
                 column: "CreatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_PostId",
-                table: "Comment",
+                name: "IX_Comments_PostId",
+                table: "Comments",
                 column: "PostId");
 
             migrationBuilder.CreateIndex(
@@ -88,7 +93,7 @@ namespace ImagegramAPI.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Comment");
+                name: "Comments");
 
             migrationBuilder.DropTable(
                 name: "Posts");

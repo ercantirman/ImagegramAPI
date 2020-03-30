@@ -12,7 +12,7 @@ namespace ImagegramAPI.Infrastructure
 
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Comment> Comment { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,6 +27,10 @@ namespace ImagegramAPI.Infrastructure
                .HasMany(p => p.Posts)
                .WithOne(q => q.Creator)
                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Account>()
+            .HasData(new { Id = (long)1 , Name = "Admin"});
+
         }
     }
 }

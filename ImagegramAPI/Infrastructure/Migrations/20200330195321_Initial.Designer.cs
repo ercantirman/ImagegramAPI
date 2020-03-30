@@ -8,7 +8,7 @@ using System;
 namespace ImagegramAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(ImagegramDbContext))]
-    [Migration("20200328230654_Initial")]
+    [Migration("20200330195321_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,13 @@ namespace ImagegramAPI.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("ImagegramAPI.Domain.Comment", b =>
@@ -59,7 +66,7 @@ namespace ImagegramAPI.Infrastructure.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("ImagegramAPI.Domain.Post", b =>

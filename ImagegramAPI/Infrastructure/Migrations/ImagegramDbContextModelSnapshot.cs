@@ -30,6 +30,13 @@ namespace ImagegramAPI.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("ImagegramAPI.Domain.Comment", b =>
@@ -57,7 +64,7 @@ namespace ImagegramAPI.Infrastructure.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("ImagegramAPI.Domain.Post", b =>
