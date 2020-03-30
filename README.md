@@ -11,7 +11,7 @@ Then you need to set your database up and running. To do that you can use "updat
 ```
 {
   "ConnectionStrings": {
-    "Default": "Server=localhost; Database=SafetyTourDb; Trusted_Connection=True;"
+    "ImagegramDb": "Server=.; Database=ImagegramDb; Trusted_Connection=True;"
   }
 }
 ```
